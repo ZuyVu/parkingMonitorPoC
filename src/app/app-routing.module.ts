@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'exit',
     loadChildren: () => import('./pages/exit/exit.module').then( m => m.ExitPageModule)
   },
+  {
+    path: 'entrance-success',
+    loadChildren: () => import('./pages/entrance-success/entrance-success.module').then( m => m.EntranceSuccessPageModule)
+  },
 ];
 
 @NgModule({

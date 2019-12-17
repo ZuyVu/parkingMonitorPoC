@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { QrcodeService } from 'src/app/services/qrcode.service';
+import { LoadingController } from '@ionic/angular';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-entrance',
@@ -8,8 +10,8 @@ import { QrcodeService } from 'src/app/services/qrcode.service';
   styleUrls: ['./entrance.page.scss'],
 })
 export class EntrancePage implements OnInit {
-
-  constructor(private qrcodeService: QrcodeService) { }
+  isLoading = false;
+  constructor(private qrcodeService: QrcodeService, private loadingCtrl: LoadingController, private router: Router) { }
 
   ngOnInit() {
   }
@@ -18,12 +20,19 @@ export class EntrancePage implements OnInit {
     if (!form.valid) {
       return;
     }
-    const licensePlate = form.value.licensePlate;
-    console.log(licensePlate);
+    let qrcode: string;
+    this.loadingCtrl.create({keyboardClose: true, message: 'Generating QR code...'})
+      .then(loadingEl => {
+        loadingEl.present();
+        const licensePlate = form.value.licensePlate;
+        qrcode = this.qrcodeService.getUrl(licensePlate);
+        setTimeout(() => {
+          loadingEl.dismiss();
+          this.router.navigateByUrl('/entrance-success');
+        }, 1500);
+      });
+    
 
-    const qrcode = this.qrcodeService.getUrl(licensePlate);
-
-    console.log(qrcode);
 
   }
 
