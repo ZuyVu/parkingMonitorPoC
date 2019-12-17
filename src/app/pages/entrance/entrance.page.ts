@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { QrcodeService } from 'src/app/services/qrcode.service';
 
 @Component({
   selector: 'app-entrance',
@@ -8,7 +9,7 @@ import { NgForm } from '@angular/forms';
 })
 export class EntrancePage implements OnInit {
 
-  constructor() { }
+  constructor(private qrcodeService: QrcodeService) { }
 
   ngOnInit() {
   }
@@ -19,6 +20,11 @@ export class EntrancePage implements OnInit {
     }
     const licensePlate = form.value.licensePlate;
     console.log(licensePlate);
+
+    const qrcode = this.qrcodeService.getUrl(licensePlate);
+
+    console.log(qrcode);
+
   }
 
 }
