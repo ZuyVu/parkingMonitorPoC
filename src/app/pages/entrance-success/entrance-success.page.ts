@@ -12,6 +12,7 @@ export class EntranceSuccessPage implements OnInit {
 
   ngOnInit() {
     this.qrcodeUrl = this.qrcodeService.url;
+
   }
 
 }
