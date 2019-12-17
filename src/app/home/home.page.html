@@ -1,14 +1,26 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Parking Monitor App (Proof of concept)
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+<ion-content padding text-center>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card class="entrance">
+            <ion-icon name="log-in" size="large"></ion-icon>
+            <ion-card-title>Entrance</ion-card-title>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="exit">
+            <ion-icon name="log-out" size="large"></ion-icon>
+            <ion-card-title>Exit</ion-card-title>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
