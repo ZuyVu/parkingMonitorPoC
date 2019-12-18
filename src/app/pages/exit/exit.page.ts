@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-exit',
   templateUrl: './exit.page.html',
@@ -12,4 +13,7 @@ export class ExitPage implements OnInit {
   ngOnInit() {
   }
 
+  onImagePicked(imageData: string) {
+    
+  }
 }

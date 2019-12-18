@@ -4,23 +4,26 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DatabaseService {
-  map = new Map<string, Date>();
+  record = new Map<string, Date>();
   constructor() {}
 
   addLicensePlate(licensePlate: string) {
-    if (this.map.has(licensePlate)) {
+    if (this.record.has(licensePlate)) {
       // return error
     } else {
-      this.map.set(licensePlate, new Date());
+      this.record.set(licensePlate, new Date());
       console.log(new Date());
-      console.log(this.map);
+      console.log(this.record);
     }
   }
 
   getLicensePlate(licensePlate: string) {
-    const entryTime = this.map.get(licensePlate);
-    this.map.delete(licensePlate);
+    console.log(this.record);
+    const entryTime = this.record.get(licensePlate);
+    console.log('Entry time is', entryTime);
+    console.log('Current time is', new Date());
     const timeDiff = this.time_difference(entryTime, new Date());
+    this.record.delete(licensePlate);
     return timeDiff;
   }
 
