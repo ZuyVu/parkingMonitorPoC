@@ -23,6 +23,8 @@ export class ExitPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    const time = new Date("December 18, 2019 00:00:00");
+    this.database.record.set('GB123', time);
   }
 
   onPickImage() {
@@ -31,8 +33,6 @@ export class ExitPage implements OnInit {
 
   onFileChosen(event: Event) {
     // Hardcoded a record for developement purpuses
-    const time = new Date("December 18, 2019 00:00:00");
-    this.database.record.set('GB123', time);
     const pickedFile = (event.target as HTMLInputElement).files[0];
     this.loadingCtrl
       .create({ keyboardClose: true, message: 'Reading QR Code...' })
