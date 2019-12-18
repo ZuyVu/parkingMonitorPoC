@@ -20,9 +20,11 @@ export class DatabaseService {
   }
 
   getLicensePlate(licensePlate: string) {
-    console.log(this.record);
     this.lastLicensePlate = licensePlate;
     const entryTime = this.record.get(licensePlate);
+    if (!entryTime) {
+    return null;
+    }
     console.log('Entry time is', entryTime);
     console.log('Current time is', new Date());
     const timeDiff = this.time_difference(entryTime, new Date());
