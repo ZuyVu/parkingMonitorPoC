@@ -7,15 +7,13 @@ import { IonicModule } from '@ionic/angular';
 import { ExitPageRoutingModule } from './exit-routing.module';
 
 import { ExitPage } from './exit.page';
-import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ExitPageRoutingModule,
-    SharedModule
+    ExitPageRoutingModule
   ],
   declarations: [ExitPage]
 })
