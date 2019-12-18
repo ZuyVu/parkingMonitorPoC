@@ -30,9 +30,9 @@ export class EntranceSuccessPage implements OnInit {
           loadingEl.dismiss();
         }, 1000);
       });
-    setTimeout(() => {
-      this.router.navigateByUrl('/home');
-    }, 30000);
+    // setTimeout(() => {
+    //   this.router.navigateByUrl('/home');
+    // }, 30000);
   }
 
 }

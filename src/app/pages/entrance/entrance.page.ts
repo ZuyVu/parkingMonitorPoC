@@ -24,8 +24,8 @@ export class EntrancePage implements OnInit {
       return;
     }
     const licensePlate = form.value.licensePlate.toUpperCase();
-    this.qrcodeService.createQRCodeUrl(licensePlate);
     if (this.databaseService.addLicensePlate(licensePlate)) {
+      this.qrcodeService.createQRCodeUrl(licensePlate);
       this.router.navigateByUrl('/entrance-success');
     } else {
       this.router.navigateByUrl('/entrance-fail');

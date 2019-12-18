@@ -12,7 +12,6 @@ export class EntranceFailPage implements OnInit {
 
   ngOnInit() {
     this.licensePlate = this.database.lastLicensePlate;
-    this.licensePlate = 'GB12345';
   }
 
 }
