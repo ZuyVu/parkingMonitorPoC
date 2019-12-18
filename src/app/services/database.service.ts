@@ -16,8 +16,6 @@ export class DatabaseService {
       return false; // Record already Exist
     } else {
       this.record.set(licensePlate, new Date());
-      console.log(new Date());
-      console.log(this.record);
       return true;
     }
   }
@@ -28,8 +26,6 @@ export class DatabaseService {
     if (!entryTime) {
     return null;
     }
-    console.log('Entry time is', entryTime);
-    console.log('Current time is', new Date());
     const timeDiff = this.time_difference(entryTime, new Date());
     this.lastTimeDiff = timeDiff;
     this.record.delete(licensePlate);
@@ -38,7 +34,7 @@ export class DatabaseService {
 
 
   time_difference(time1: Date, time2: Date) {
-    let diff = (time2.getTime() - time1.getTime()) / 1000;
+    const diff = (time2.getTime() - time1.getTime()) / 1000;
     return Math.abs(Math.round(diff));
   }
 }

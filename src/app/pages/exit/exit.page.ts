@@ -30,10 +30,9 @@ export class ExitPage implements OnInit {
   }
 
   onFileChosen(event: Event) {
+    // Hardcoded a record for developement purpuses
     const time = new Date("December 18, 2019 00:00:00");
-    // console.log('generated time is', time);
-    this.database.record.set('HELLOTOME', time);
-    // console.log(this.database.record);
+    this.database.record.set('GB123', time);
     const pickedFile = (event.target as HTMLInputElement).files[0];
     this.loadingCtrl
       .create({ keyboardClose: true, message: 'Reading QR Code...' })
@@ -42,12 +41,12 @@ export class ExitPage implements OnInit {
         this.qrcodeService.readQRCode(pickedFile)
           .subscribe(res => {
             const licensePlate = res[0].symbol[0].data;
-            console.log('License plate is', licensePlate);
+            // console.log('License plate is', licensePlate);
             const timeDiff = this.database.getLicensePlate(licensePlate);
-            console.log('timeDiff in exit is', timeDiff);
-            if (timeDiff) {
+            // console.log('timeDiff in exit is', timeDiff);
+            if (timeDiff) { // Successfully get recorded license plate
               this.router.navigateByUrl('/exit-success');
-            } else {
+            } else { // License plate not found in database
               this.router.navigateByUrl('/exit-fail');
             }
           });

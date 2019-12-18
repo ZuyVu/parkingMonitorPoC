@@ -24,7 +24,6 @@ export class QrcodeService {
       this.size
     );
     this.lastUrl = url;
-    console.log(url);
     return url;
   }
 
