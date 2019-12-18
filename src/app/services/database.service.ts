@@ -10,6 +10,7 @@ export class DatabaseService {
   constructor() {}
 
   addLicensePlate(licensePlate: string) {
+    licensePlate = licensePlate.toUpperCase();
     this.lastLicensePlate = licensePlate;
     if (this.record.has(licensePlate)) {
       return false; // Record already Exist

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-title>Exit Success</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-padding">
+    <ion-row class="ion-text-center">
+      <ion-col size-sm="6" offset-sm="3">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>Your license plate is</ion-card-subtitle>
+            <ion-card-title> {{licensePlate}} </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-label>You have parked for: </ion-label>
+            <h2>
+              <span *ngIf="timeDiffConverted.day > 0">{{timeDiffConverted.day}} Days </span>
+              <span *ngIf="timeDiffConverted.hour > 0">{{timeDiffConverted.hour}} Hours </span>
+              <span *ngIf="timeDiffConverted.minute > 0">{{timeDiffConverted.minute}} Minutes </span>
+              <span *ngIf="timeDiffConverted.second > 0">{{timeDiffConverted.second}} Seconds </span>
+            </h2>
+              
+            <h1 *ngIf="!mustPay">Thank you for using our service!</h1>
+            <h1 *ngIf="mustPay">Parking time is over 2 hours.</h1>
+            <h1 *ngIf="mustPay">Please proceed to ticket office to pay for excess fee.</h1>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-text-center">
+      <ion-col>
+        <ion-button routerLink="/home">Next Customer</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

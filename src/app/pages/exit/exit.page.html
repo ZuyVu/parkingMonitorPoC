@@ -8,21 +8,22 @@
 </ion-header>
 
 <ion-content>
-  <div class="picker">
-    <ion-img role="button" class="image" (click)="onPickImage()" [src]="selectedImage" *ngIf="selectedImage">
-    </ion-img>
-    <ion-button color="primary" (click)="onPickImage()" *ngIf="!selectedImage">
-      <ion-icon name="camera" slot="start"></ion-icon>
-      <ion-label>Pick QR code</ion-label>
-    </ion-button>
-  </div>
-  
-  <input #filePicker type="file" accept="image/png" (change)="onFileChosen($event)">
-  
-  <form enctype="multipart/form-data" action="http://api.qrserver.com/v1/read-qr-code/" method="POST">
-    <input name="MAX_FILE_SIZE" value="1048576" type="hidden" />
-    <input name="file" accept="image/png" type="file" />
-    <input type="submit" value="Read QR code" />
-  </form>
-
+  <ion-grid class="ion-text-center">
+    <ion-row>
+      <ion-col>
+          <ion-button color="primary" (click)="onPickImage()" *ngIf="!selectedImage">
+            <ion-icon name="camera" slot="start"></ion-icon>
+            <ion-label>Pick QR code</ion-label>
+          </ion-button>
+          
+        <input #filePicker type="file" accept="image/png" (change)="onFileChosen($event)">
+        
+        <!-- <form enctype="multipart/form-data" action="http://api.qrserver.com/v1/read-qr-code/" method="POST">
+          <input name="MAX_FILE_SIZE" value="1048576" type="hidden" />
+          <input name="file" accept="image/png" type="file" />
+          <input type="submit" value="Read QR code" />
+        </form> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

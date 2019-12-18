@@ -13,6 +13,7 @@ export class QrcodeService {
   constructor(private http: HttpClient) {}
 
   createQRCodeUrl(licensePlate: string): string {
+    licensePlate = licensePlate.toUpperCase();
     const url = (
       this.endpoint_create +
       'data=' +

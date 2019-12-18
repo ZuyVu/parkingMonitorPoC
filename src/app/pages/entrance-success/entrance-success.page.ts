@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { QrcodeService } from 'src/app/services/qrcode.service';
 import { LoadingController } from '@ionic/angular';
 import { DatabaseService } from 'src/app/services/database.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-entrance-success',
@@ -14,7 +15,8 @@ export class EntranceSuccessPage implements OnInit {
   constructor(
     private qrcodeService: QrcodeService,
     private database: DatabaseService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -28,6 +30,9 @@ export class EntranceSuccessPage implements OnInit {
           loadingEl.dismiss();
         }, 1000);
       });
+    setTimeout(() => {
+      this.router.navigateByUrl('/home');
+    }, 30000);
   }
 
 }

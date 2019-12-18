@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { QrcodeService } from 'src/app/services/qrcode.service';
-import { LoadingController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DatabaseService } from 'src/app/services/database.service';
@@ -14,7 +13,6 @@ export class EntrancePage implements OnInit {
   isLoading = false;
   constructor(
     private qrcodeService: QrcodeService,
-    private loadingCtrl: LoadingController,
     private router: Router,
     private databaseService: DatabaseService
   ) {}
