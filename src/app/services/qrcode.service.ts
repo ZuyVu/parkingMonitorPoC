@@ -17,7 +17,7 @@ export class QrcodeService {
     const url = (
       this.endpoint_create +
       'data=' +
-      licensePlate.replace(/\s/g, '') +
+      licensePlate +
       '&size=' +
       this.size +
       'x' +
