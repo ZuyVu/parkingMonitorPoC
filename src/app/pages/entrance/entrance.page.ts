@@ -25,18 +25,12 @@ export class EntrancePage implements OnInit {
     if (!form.valid) {
       return;
     }
-    let qrcode: string;
-    this.loadingCtrl
-      .create({ keyboardClose: true, message: 'Generating QR code...' })
-      .then(loadingEl => {
-        loadingEl.present();
-        const licensePlate = form.value.licensePlate;
-        qrcode = this.qrcodeService.getUrl(licensePlate);
-        this.databaseService.addLicensePlate(licensePlate);
-        setTimeout(() => {
-          loadingEl.dismiss();
-          this.router.navigateByUrl('/entrance-success');
-        }, 1500);
-      });
+    const licensePlate = form.value.licensePlate.toUpperCase();
+    this.qrcodeService.createQRCodeUrl(licensePlate);
+    if (this.databaseService.addLicensePlate(licensePlate)) {
+      this.router.navigateByUrl('/entrance-success');
+    } else {
+      this.router.navigateByUrl('/entrance-fail');
+    }
   }
 }

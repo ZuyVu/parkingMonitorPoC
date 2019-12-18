@@ -10,12 +10,14 @@ export class DatabaseService {
   constructor() {}
 
   addLicensePlate(licensePlate: string) {
+    this.lastLicensePlate = licensePlate;
     if (this.record.has(licensePlate)) {
-      // return error
+      return false; // Record already Exist
     } else {
       this.record.set(licensePlate, new Date());
       console.log(new Date());
       console.log(this.record);
+      return true;
     }
   }
 

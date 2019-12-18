@@ -9,10 +9,10 @@ export class QrcodeService {
   private endpoint_create = 'https://api.qrserver.com/v1/create-qr-code/?';
   private endpoint_read = 'https://api.qrserver.com/v1/read-qr-code/?';
   private size = 200;
-  url: string;
+  lastUrl: string;
   constructor(private http: HttpClient) {}
 
-  getUrl(licensePlate: string): string {
+  createQRCodeUrl(licensePlate: string): string {
     const url = (
       this.endpoint_create +
       'data=' +
@@ -22,7 +22,7 @@ export class QrcodeService {
       'x' +
       this.size
     );
-    this.url = url;
+    this.lastUrl = url;
     console.log(url);
     return url;
   }

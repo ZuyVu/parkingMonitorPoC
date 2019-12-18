@@ -6,12 +6,23 @@
 
 <ion-content>
   <ion-grid padding>
-    <ion-row text-center>
-      <ion-col>
-        <img [src]="qrcodeUrl"/>
+    <ion-row class="ion-text-center">
+      <ion-col size-sm="6" offset-sm="3">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>Your license plate is</ion-card-subtitle>
+            <ion-card-title> {{licensePlate}} </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+        
+            <ion-spinner *ngIf="!qrcodeUrl"></ion-spinner>
+            <img *ngIf="qrcodeUrl" [src]="qrcodeUrl" />
+
+          </ion-card-content>
+        </ion-card>
       </ion-col>
     </ion-row>
-    <ion-row text-center>
+    <ion-row class="ion-text-center">
       <ion-col>
         <ion-button routerLink="/home">Next Customer</ion-button>
       </ion-col>
