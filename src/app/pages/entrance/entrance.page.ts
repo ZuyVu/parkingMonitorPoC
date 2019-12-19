@@ -24,6 +24,7 @@ export class EntrancePage implements OnInit {
       return;
     }
     const licensePlate = form.value.licensePlate.toUpperCase().replace(/\s/g, '');
+    // licensePlate = encodeURIComponent(licensePlate);
     console.log('licensePlate in onSubmit is', licensePlate);
     if (this.databaseService.addLicensePlate(licensePlate)) {
       this.qrcodeService.createQRCodeUrl(licensePlate);
